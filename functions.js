@@ -15,9 +15,13 @@ const channels = require("./channels.json");
  ****************************************************************/
 function getChannelName(channel) {
   // Your code here
+  channel.forEach(x=> {console.log(x.name)})
+   //return channel.name 
+
+  
 }
 
-// console.log(getChannelName(channels[0]));
+console.log(getChannelName(channels));
 
 /**************************************************************
  * numberOfVideos(channel)
@@ -26,6 +30,8 @@ function getChannelName(channel) {
  ****************************************************************/
 function numberOfVideos(channel) {
   // Your code here
+  channel.forEach(x=>{console.log(x.videos.length())})
+  //return channel.videos.length;
 }
 // console.log(numberOfVideos(channels[0]))
 
@@ -40,6 +46,12 @@ function numberOfVideos(channel) {
  ****************************************************************/
 function channelHasVideo(videoTitle, channel) {
   // Your code here
+  const found = channel.videos.find(x=>x.title==videoTitle);
+  return found;
+  //only return object
+  //const found = channel.videos.some(x=>x.title==videoTitle);only return true or false
+ 
+
 }
 // console.log(channelHasVideo("The Universal S", channels[0]));
 // console.log(channelHasVideo("The Universal S", channels[1]));
@@ -54,8 +66,12 @@ function channelHasVideo(videoTitle, channel) {
  ****************************************************************/
 function getChannelByName(channelName, channels) {
   // Your code here
+  const a =channels.find(x=>{
+    return x.name==channelName
+  })
+  return a
 }
-// console.log(getChannelByName("PowerfulJRE", channels))
+console.log(getChannelByName("CGP Grey", channels))
 
 /**************************************************************
  * getChannelByVideoTitle(videoTitle, channels):
@@ -67,7 +83,11 @@ function getChannelByName(channelName, channels) {
  ****************************************************************/
 function getChannelByVideoTitle(videoTitle, channels) {
   // Your code here
-}
+  const a= channels.find(x=>{return x.videos.find(y=>y.title==videoTitle) });
+       return found;
+       // const f=channels.find(x=>x.videos.find(y=>y.title==videoTitle)) return f;
+  }
+
 // console.log(getChannelByVideoTitle("The Universal S", channels));
 
 /**************************************************************
@@ -80,6 +100,8 @@ function getChannelByVideoTitle(videoTitle, channels) {
  ****************************************************************/
 function searchChannels(query, channels) {
   // Your code here
+  const b=channels.filter(x=>x.name.includes(query) ||x.description.includes(query))
+  return b;
 }
 // console.log(searchChannels("the", channels))
 
