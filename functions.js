@@ -15,9 +15,10 @@ const channels = require("./channels.json");
  ****************************************************************/
 function getChannelName(channel) {
   // Your code here
-  channel.forEach(x=> {console.log(x.name)})
+  //channel.forEach(x=> {console.log(x.name)})
    //return channel.name 
-
+   const chanelName=channel.map(x=>x.name);
+   return chanelName;
   
 }
 
@@ -30,10 +31,12 @@ console.log(getChannelName(channels));
  ****************************************************************/
 function numberOfVideos(channel) {
   // Your code here
-  channel.forEach(x=>{console.log(x.videos.length())})
+ // channel.forEach(x=>{console.log(x.videos.length())})
   //return channel.videos.length;
+  const numVideo=channel.map(x=>x.videos.length)
+  return numVideo;
 }
-// console.log(numberOfVideos(channels[0]))
+console.log(numberOfVideos(channels))
 
 /**************************************************************
  * channelHasVideo(videoTitle, channel):
@@ -46,14 +49,18 @@ function numberOfVideos(channel) {
  ****************************************************************/
 function channelHasVideo(videoTitle, channel) {
   // Your code here
-  const found = channel.videos.find(x=>x.title==videoTitle);
-  return found;
+ //    const found = channel.videos.find(x=>x.title==videoTitle);
+  //   return found;
   //only return object
   //const found = channel.videos.some(x=>x.title==videoTitle);only return true or false
+ const hasVideo=channel.map(x=>{
+  return x.videos.some(video=> {
+    return video.title==videoTitle
+  });})
  
-
+  return hasVideo;
 }
-// console.log(channelHasVideo("The Universal S", channels[0]));
+console.log(channelHasVideo("The Universal S", channels));
 // console.log(channelHasVideo("The Universal S", channels[1]));
 
 /**************************************************************
@@ -82,9 +89,13 @@ console.log(getChannelByName("CGP Grey", channels))
  * BONUS: use iteration methods `.find()` and `.some()`
  ****************************************************************/
 function getChannelByVideoTitle(videoTitle, channels) {
+  // const channelName=channels.find(x=>{
+  //   return x.videos.map(x=>{
+  //     if(x.title==videoTitle)}
+    //)
   // Your code here
-  const a= channels.find(x=>{return x.videos.find(y=>y.title==videoTitle) });
-       return found;
+  //const a= channels.find(x=>{return x.videos.find(y=>y.title==videoTitle) });
+       //return found;
        // const f=channels.find(x=>x.videos.find(y=>y.title==videoTitle)) return f;
   }
 
